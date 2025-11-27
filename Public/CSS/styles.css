@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: "Cairo", sans-serif;
+}
+/***********************************Header**********************************************/
+header {
+    background-color: #D5001C;
+}
+.logo {
+    margin-left: 25px;
+    height: 76px;
+    width: 44px;
+}
+.icons svg{
+    height: 24px;
+    width: 24px;
+    color: white !important;
+    fill: white !important;
+    margin-right: 25px;
+}
+.navMenu{
+    display: flex;
+    justify-content: left;
+    flex-grow: 1;
+    margin-left: 25px;
+}
+.navMenu ul {
+    display: flex;
+    gap: 15px;
+}
+.navMenu .nav-link {
+    color: white !important;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navMenu svg {
+    width: 16px;
+    height: 16px;
+    color: white !important;
+    fill: white !important;
+}
+.navMenu li{
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+}
+
+/************************ Banner **************************/
+
+.carousel {
+    background-size: cover;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 640px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 380px;
+    }
+}
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.carousel-indicators button {
+    width: 226px;
+    height: 3px;
+    background-color: #ffffff4D;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-indicators button {
+        width: 40px;
+    }
+}
+
+.carousel-indicators .active {
+    background-color: #FFFFFF;
+}
+
+.carousel-indicators button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #C1001A;
+    animation: none;
+}
+
+.carousel-indicators button.active::after {
+    animation: fillIndicator 5s linear forwards;
+}
+
+@keyframes fillIndicator {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.carousel-caption {
+    bottom: 25% !important;
+}
+.carousel-caption h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        bottom: 20%;
+        padding: 0 20px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 24px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+}
+.botonIzquierdo, .botonDerecho {
+    background: #C1001A !important;
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border: none !important;
+}
+
+.botonIzquierdo svg path, .botonDerecho svg path {
+    fill: white;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50% !important;
+    opacity: 1 !important;
+}
+.carousel-control-prev {
+    left: 30px !important;
+}
+.carousel-control-next {
+    right: 30px !important;
+}
+
+@media (max-width: 768px) {
+    .botonIzquierdo, .botonDerecho {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .carousel-control-prev {
+        left: 10px !important;
+    }
+    .carousel-control-next {
+        right: 10px !important;
+    }
+}
+
+/***************************Section 1*************************************/
+.titulo{
+    padding: 70px;
+    font-size: 32px;
+}
+.mejoresHamburgesas{
+    gap: 30px;
+}
+
+.card{
+    width: 382px; 
+    height: 485px;
+    border-radius: 10px !important; 
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+
+}
+.card-img-top{
+    background-image: url("../Imagenes/fondoMejoresHamburgesas.jpg");   
+    height: 286px;       
+    border-radius: 10px 10px 0 0 !important;
+}
+.card .card-title {
+    color: #000 !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+}
+.btn-primary{
+    background-color: #D5001C !important;
+    width: 130px;
+}
+
+/***********************************Section 2******************************************/
+
+#homeSection3{
+    background-image: url("../Imagenes/FondoMenus.png");   
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat; 
+     min-height: 500px;
+}
+
+#homeSection3 .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D5001C;
+    opacity: 0.8;    
+    z-index: 1;       /
+}
+
+#homeSection3 > *:not(.bg-overlay) {
+    position: relative;
+    z-index: 2;
+}
+
+.info-card{
+    background-color: white;
+    height: 152px;
+    width: 418px;
+    padding: 28px;
+    border-radius: 10px;
+}
+.add-btn{
+    margin-top: 10px;
+    width: 86px;
+    height: 37px;
+}
+#menu-img{
+    width: 282;
+    height: 215px;
+}
+.nav-btn {
+    bottom: -85px; 
+    width: 48px;
+    height: 48px;
+}
+#btn-prev {
+    left: -550px;
+}
+#btn-next {
+    right:  -550px;
+}
+.btn-secondary{
+    background-color: #E8EBEE !important;
+}
+/***************************Section 3*****************************************/
+.maps{
+    width: 668px;
+    height: 360px;
+    border-radius: 10px;
+}
+.maps-svg{
+    width: 24px;
+    height: 24px;
+    color: #C1001A;
+    fill: #C1001A;
+    margin-right: 10px;
+}
+
+/***************************Footer*****************************************/
+.footer {
+    background-color: #D5001C !important;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-icon svg {
+    color: white;
+    transition: 0.3s;
+}
+
+.footer-icon svg:hover {
+    transform: scale(1.2);
+    color: #f0f0f0;
+}
+
+.footer-logo {
+    width: 100px;
+}
+/****************************************Header puebas**********************************************************************************/
+header .navbar {
+  background-color: #D5001C!important;
+}
