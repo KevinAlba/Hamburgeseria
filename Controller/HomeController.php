@@ -1,5 +1,6 @@
 <?php
 include_once 'Model/ProductoDAO.php';
+
  class HomeController {
      public function index() {
         $view = 'View/home.php';
@@ -8,5 +9,6 @@ include_once 'Model/ProductoDAO.php';
         include 'View/main.php';
         
      }
+     
  }
 ?>

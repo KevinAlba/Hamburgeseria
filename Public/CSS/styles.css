@@ -5,10 +5,11 @@
 
 html, body {
     font-family: "Cairo", sans-serif;
+    background-color: #F7F9F9;
 }
 /***********************************Header**********************************************/
-header {
-    background-color: #D5001C;
+header .navbar {
+  background-color: #D5001C!important;
 }
 .logo {
     margin-left: 25px;
@@ -20,36 +21,14 @@ header {
     width: 24px;
     color: white !important;
     fill: white !important;
-    margin-right: 25px;
 }
-.navMenu{
-    display: flex;
-    justify-content: left;
-    flex-grow: 1;
-    margin-left: 25px;
-}
-.navMenu ul {
-    display: flex;
-    gap: 15px;
-}
-.navMenu .nav-link {
-    color: white !important;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.navMenu svg {
-    width: 16px;
-    height: 16px;
+svg {
     color: white !important;
     fill: white !important;
 }
-.navMenu li{
-    display: flex;
-    align-items: center;
-    gap: 6px; 
+
+.white-toggler.white-icon .navbar-toggler-icon {
+    filter: invert(1);
 }
 
 /************************ Banner **************************/
@@ -201,6 +180,13 @@ header {
     background-image: url("../Imagenes/fondoMejoresHamburgesas.jpg");   
     height: 286px;       
     border-radius: 10px 10px 0 0 !important;
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.img-mejoresHamburgesas{
+    width: 239px;
+    height: 179px;    
 }
 .card .card-title {
     color: #000 !important;
@@ -219,7 +205,7 @@ header {
     background-size: cover;     
     background-position: center;
     background-repeat: no-repeat; 
-     min-height: 500px;
+    min-height: 500px;
 }
 
 #homeSection3 .bg-overlay {
@@ -230,7 +216,7 @@ header {
     height: 100%;
     background-color: #D5001C;
     opacity: 0.8;    
-    z-index: 1;       /
+    z-index: 1;       
 }
 
 #homeSection3 > *:not(.bg-overlay) {
@@ -238,36 +224,49 @@ header {
     z-index: 2;
 }
 
-.info-card{
-    background-color: white;
-    height: 152px;
-    width: 418px;
-    padding: 28px;
-    border-radius: 10px;
-}
-.add-btn{
-    margin-top: 10px;
-    width: 86px;
-    height: 37px;
-}
-#menu-img{
-    width: 282;
-    height: 215px;
-}
-.nav-btn {
-    bottom: -85px; 
-    width: 48px;
-    height: 48px;
-}
-#btn-prev {
-    left: -550px;
-}
-#btn-next {
-    right:  -550px;
-}
 .btn-secondary{
     background-color: #E8EBEE !important;
 }
+ .slider-container {
+    width: 100%; 
+    margin-right: auto;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 76px; 
+}
+
+.slider-track img {
+    width: 300px;
+   height: 174px;
+   opacity: 0.4;
+   transform: scale(0.7) rotateY(0deg);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slider-track img.active {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+    z-index: 2;
+}
+
+.slider-track img.side {
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.info-card {
+    background-color: white;
+    width: 418px ;
+    height: 152px;
+    border-radius: 10px;
+}
+
+
 /***************************Section 3*****************************************/
 .maps{
     width: 668px;
@@ -277,8 +276,8 @@ header {
 .maps-svg{
     width: 24px;
     height: 24px;
-    color: #C1001A;
-    fill: #C1001A;
+    color: #C1001A  !important;
+    fill: #C1001A  !important; ;
     margin-right: 10px;
 }
 
@@ -310,7 +309,138 @@ header {
 .footer-logo {
     width: 100px;
 }
-/****************************************Header puebas**********************************************************************************/
-header .navbar {
-  background-color: #D5001C!important;
+/**************************************** Cartaaa **********************************************************************************/
+.nav-carta {
+    color: #51606C;
+    font-weight: 500 ;
+    padding-bottom: 4px;
 }
+
+.nav-carta.active {
+    color: #000000 !important;
+    border-bottom: 3px solid #B2000E;
+}
+
+.nav-carta:hover {
+    color: #000000 !important;
+}
+.categoria-hija-titulo{
+    color: #000000 !important;
+    font-size: 24px !important; 
+
+}
+.card-carta{
+    width: 276px; 
+    height: 484px;  
+    border-radius: 0 0 10px 10px!important;
+     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+
+}
+.card-carta-img{
+    background-color: #E8EBEE ;
+    height: 300px;       
+}
+.card-precio{
+   position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #D5001C ;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.img-carta{
+    width: 175px;
+    height: 175px;   
+    object-fit: contain;  
+}
+.card-carta-p {
+    margin-top: 5px;
+    color: #212529 !important;
+    font-size: 16px !important;
+    padding:0 5px 0 5px;
+}
+
+.card-carta-title {
+    margin-top: 15px;
+    color: #000000 !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+}
+/********************************************Login****************************************************************/
+
+
+
+
+  .login{
+    background-image: url("Public/Imagenes/FondoMenus.png");   
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat; 
+    min-height: 750px;  
+  }
+.login .bg-overlay {
+    position: absolute;
+    top: 92px;
+    left: 0;
+    width: 100%;
+    height: 750px;
+    background-color: #D5001C;
+    opacity: 0.8;    
+    z-index: 1;       
+}
+.login > *:not(.bg-overlay) {
+    position: relative;
+    z-index: 2;
+}
+
+  .login-container{
+    background: white;
+    padding: 35px 40px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  .login-title{
+    font-size: 24px;
+    color: #D5001C;
+    margin-bottom: 25px;
+   
+  }
+
+  .login-input{
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  .login-botton{
+    padding: 12px 15px;
+    background-color: #D5001C;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .login-botton:hover{
+    background-color: #C1001A;
+  }
+
+  .login-dividir{
+    margin: 20px 0;
+    font-size: 14px;
+    color: #777;
+  }
+
+  .login-registrarse{
+    color: #D5001C;
+  }
+
+  .login-registrarse:hover{
+    text-decoration: underline;
+    color: #C1001A;
+  }

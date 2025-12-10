@@ -21,7 +21,7 @@ class Producto {
         return $this->precio;
     }
     public function getimagen() {
-        return $this->producto_id;
+        return $this->imagen;
     }
     public function getcategoria_id() {
         return $this->categoria_id;

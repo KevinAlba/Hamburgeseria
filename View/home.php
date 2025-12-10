@@ -7,6 +7,7 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Public/CSS/styles.css">
+
 </head>
 
 <body>
@@ -64,8 +65,8 @@
             <?php foreach ($listaProductos as $producto): ?>
                 <?php if (in_array($producto->getPRODUCTO_ID(), [6, 10, 13])): ?>
                     <div class="card border-0">
-                        <div class="card-img-top">
-                            <img src="Public/Imagenes/Productos/<?= $producto->getImagen() ?>" alt="Hamburgusa">
+                        <div class="card-img-top align-items-center d-flex justify-content-center">
+                            <img class="img-mejoresHamburgesas" src="Public/Imagenes/Productos/<?= $producto->getimagen() ?>" alt="Hamburgusa">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center"><?= $producto->getNOMBRE() ?></h5>
@@ -78,49 +79,39 @@
         </div>
     </section>
     <!---------------------------------Menus Section 3------------------------------------>
-    <section id="homeSection3" class=" mt-5 position-relative pb-5">
+    <section id="homeSection3" class="mt-5 position-relative pb-5">
         <div class="bg-overlay"></div>
         <h2 class="text-center text-white fw-bold titulo">Menus</h2>
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="slider-container d-flex justify-content-center align-items-center position-relative">
+        <div class="align-items-center d-flex flex-column justify-content-center">
+            <div class="slider-container">
+                <div class="slider-track">
+                    <?php foreach ($listaProductos as $producto): ?>
+                        <img
+                            src="Public/Imagenes/Productos/<?= $producto->getImagen() ?>"
+                            data-id="<?= $producto->getPRODUCTO_ID() ?>"
+                            data-nombre="<?= $producto->getNOMBRE() ?>"
+                            data-desc="<?= $producto->getDESCRIPCION() ?>">
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div id="burger-info"></div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
                 <button id="btn-prev" class="nav-btn btn btn-secondary d-flex">
                     <svg color="currentColor" class="sc-f566aa5-0 MkIcon MkIcon--arrowLeft" role="presentation" aria-hidden="true" width="25" height="24" viewBox="0 0 25 24" fill="none" style="width: 24px; height: 24px;">
                         <path d="M12.6319 5.53033C12.9248 5.23744 12.9248 4.76256 12.6319 4.46967C12.339 4.17678 11.8641 4.17678 11.5712 4.46967L4.57123 11.4697C4.27834 11.7626 4.27834 12.2374 4.57123 12.5303L11.5712 19.5303C11.8641 19.8232 12.339 19.8232 12.6319 19.5303C12.9248 19.2374 12.9248 18.7626 12.6319 18.4697L6.87455 12.7123H19.1399C19.533 12.7123 19.8516 12.3937 19.8516 12.0007C19.8516 11.6077 19.533 11.2891 19.1399 11.2891H6.87316L12.6319 5.53033Z" fill="currentColor"></path>
                     </svg>
                 </button>
-            
-                <div class="row g-5">
-                    <div class="col">
-                        <img class="img-fluid" src="Public/Imagenes/Productos/clasica.png" alt="" width="150px">
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid" id="menu-img" src="Public/Imagenes/menuPrueba.png">
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid" src="Public/Imagenes/Productos/granadina.png" alt="">
-                    </div>
-                </div>
                 <button id="btn-next" class="nav-btn btn btn-secondary d-flex ">
                     <svg color="currentColor" class="sc-f566aa5-0 MkIcon MkIcon--arrowRight" role="presentation" aria-hidden="true" width="25" height="24" viewBox="0 0 25 24" fill="none" style="width: 24px; height: 24px;">
                         <path d="M13.0381 4.46967C12.7452 4.17678 12.2704 4.17678 11.9775 4.46967C11.6846 4.76256 11.6846 5.23744 11.9775 5.53033L17.7382 11.291H5.46755C5.07557 11.291 4.75781 11.6088 4.75781 12.0008C4.75781 12.3927 5.07557 12.7105 5.46755 12.7105H17.7367L11.9775 18.4697C11.6846 18.7626 11.6846 19.2374 11.9775 19.5303C12.2704 19.8232 12.7452 19.8232 13.0381 19.5303L20.0381 12.5303C20.331 12.2374 20.331 11.7626 20.0381 11.4697L13.0381 4.46967Z" fill="currentColor"></path>
                     </svg>
                 </button>
             </div>
-            <div class="info-card">
-                <?php foreach ($listaProductos as $producto): ?>
-                    <?php if (in_array($producto->getPRODUCTO_ID(), [6, 10, 13])): ?>
-                        <h2 id="menu-title" class="fw-bold"><?= $producto->getImagen() ?></h2>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p id="menu-desc"><?= $producto->getDESCRIPCION() ?></p>
-                            <a href="index.php?ProductoControllerr=Productos&action=show&PRODUCTO_ID=<?= $producto->getPRODUCTO_ID() ?>" class="add-btn btn  btn-primary">Ver más</a>
-                        </div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </div>
+
         </div>
     </section>
     <!---------------------------------Menus Section 4------------------------------------>
-
     <section class=" mb-5">
         <h2 class=" text-center mt-5 mb-3">Ven aprobar la experencia rojiblanca</h2>
         <p class=" text-center">Estamos en el corazon del Granada, listos para servirte la mejor burguer con pasion de estadio</p>
@@ -156,9 +147,83 @@
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-<div class="overfow:hidden;">
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. OBTENCIÓN DE ELEMENTOS Y VARIABLES GLOBALES
 
-</div>
+    const track = document.querySelector('.slider-track');
+    const images = Array.from(document.querySelectorAll('.slider-track img'));
+    
+    // Almacenamos el ancho base del primer elemento (o de todos si son iguales) para usarlo en los cálculos.
+    // Esto es CRÍTICO si la clase 'active' cambia el tamaño de la imagen.
+    // Si tienes dudas sobre esto, usa console.log para verificar el valor.
+    const BASE_IMAGE_WIDTH = images.length > 0 ? images[0].offsetWidth : 0;
+
+    let index = 0;
+
+    // 2. FUNCIÓN PRINCIPAL DEL SLIDER
+
+    function updateSlider() {
+        const currentImage = images[index];
+        
+        // Calcula el desplazamiento necesario para centrar la imagen activa.
+        const imageWidth = BASE_IMAGE_WIDTH || currentImage.offsetWidth; 
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseInt(trackStyle.gap) || 0;
+        const containerWidth = document.querySelector(".slider-container").clientWidth;
+        const totalWidth = imageWidth + gap;
+        const offset = (containerWidth / 2) - (imageWidth / 2) - (totalWidth * index);
+
+
+        track.style.transform = `translateX(${offset}px)`;
+        images.forEach(img => img.classList.remove('active', 'side'));
+        currentImage.classList.add('active');
+        
+        if (images[index - 1]) images[index - 1].classList.add('side');
+        
+        if (images[index + 1]) images[index + 1].classList.add('side');
+
+        updateInfoCard();
+    }
+
+    //ACTUALIZACIÓN DE INFORMACIÓN
+
+    function updateInfoCard() {
+        const img = images[index];
+        
+        // Reemplaza el contenido HTML usando los data-atributos de la imagen activa.
+        document.getElementById("burger-info").innerHTML = `
+            <div class="info-card shadow p-3">
+                <h2 class="fw-bold ">${img.dataset.nombre}</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>${img.dataset.desc}</p>
+                    <a href="index.php?ProductoControllerr=Productos&action=show&PRODUCTO_ID=${img.dataset.id}"
+                    class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Botón Siguiente
+    document.getElementById('btn-next').addEventListener('click', () => {
+        index = (index + 1) % images.length;
+        updateSlider();
+    });
+
+    // Botón Anterior
+    document.getElementById('btn-prev').addEventListener('click', () => {
+        index = (index - 1 + images.length) % images.length;
+        updateSlider();
+    });
+-
+
+    // Posiciona el slider y carga la información inicial al abrir la página.
+    updateSlider();
+});
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
 </html>

@@ -1,5 +1,8 @@
 <?php 
 include_once 'Controller/HomeController.php';
+include_once 'Controller/CartaController.php';
+include_once 'Controller/IniciarSessionController.php';
+include_once 'Controller/RegistrarseController.php';
 
 if(isset($_GET['controller'])){
     $nombre_controller = $_GET['controller']. 'Controller';
@@ -11,6 +14,9 @@ if(isset($_GET['controller'])){
         } else{
             header("Location:404.php" );
         }
+    }
+    else{
+        echo "controller no encontrado: ". $nombre_controller;
     }
 }else{
     $controller = new HomeController();
