@@ -14,5 +14,14 @@
         public function getcategoria_padre() {
             return $this->categoria_padre;
         }
+
+        /**********************API*******************************/
+public function toArray() {
+    return [
+        'categoria_id' => $this->categoria_id,
+        'nombre' => $this->nombre_categoria,
+        'categoria_padre' => $this->categoria_padre
+    ];
+}
     }
 ?>

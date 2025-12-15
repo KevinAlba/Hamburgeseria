@@ -56,3 +56,5 @@ class CategoriaDAO
         return $categoria;
     }
 }
+
+?>

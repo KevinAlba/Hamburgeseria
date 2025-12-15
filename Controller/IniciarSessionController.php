@@ -18,6 +18,7 @@
                     session_start();
                     $_SESSION['usuario_id'] = $usuario->getUsuario_id();
                     $_SESSION['nombre'] = $usuario->getNombre();
+                    $_SESSION['rol'] = $usuario->getRol();
                     header('Location:index.php?controller=Home&action=index');
                 } else{
                     $view = 'View/iniciarSession.php';

@@ -31,7 +31,6 @@ class Usuario
         $this->rol = $rol;
     }
 
-
     public function getUsuario_id(){
         return $this->usuario_id;
     }
@@ -51,9 +50,21 @@ class Usuario
     public function getTelefono(){
         return $this->telefono;
     }
-    public function getRol($rol){
-        $this->rol = $rol;
+    public function getRol(){
+        return $this->rol;
     }
+
+           /**********************API*******************************/
+public function toArray() {
+    return [
+        'usuario_id' => $this->usuario_id,
+        'nombre' => $this->nombre,
+        'correo' => $this->correo,
+        'contrasena' => $this->contrasena,
+        'telefono' => $this->telefono,
+        'rol' => $this->rol,
+    ];
 }
+    }
 
 ?>

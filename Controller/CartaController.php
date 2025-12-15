@@ -2,9 +2,11 @@
 include_once 'Model/CategoriaDAO.php';
 include_once 'Model/ProductoDAO.php';
 
-class CartaController {
+class CartaController
+{
 
-    public function index() {
+    public function index()
+    {
         $view = 'View/carta.php';
 
         $listaCategorias = CategoriaDAO::getCategorias();
@@ -27,6 +29,17 @@ class CartaController {
 
         include 'View/main.php';
     }
-}
+    /*********API Json***** */
+    public function getCategorias()
+    {
+        header('Content-Type: application/json; charset=utf-8');
 
-?>
+        $listaCategorias = CategoriaDAO::getCategorias();
+        $data = [];
+        foreach ($listaCategorias as $categoria) {
+            $data[] = $categoria->toArray();
+        }
+
+        echo json_encode($data);
+    }
+}

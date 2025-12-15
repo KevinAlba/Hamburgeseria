@@ -277,7 +277,7 @@ svg {
     width: 24px;
     height: 24px;
     color: #C1001A  !important;
-    fill: #C1001A  !important; ;
+    fill: #C1001A  !important; 
     margin-right: 10px;
 }
 
@@ -444,3 +444,95 @@ svg {
     text-decoration: underline;
     color: #C1001A;
   }
+  /************************************Administrador*************************************************/
+
+.ad-sidebar{
+    background-color: #D5001C;
+    width: max-content ;
+    padding: 2rem  1rem;
+}
+.ad-sidebar:hover .ad-sidebar-element{
+    grid-template-columns: 40px 1fr;
+}
+.ad-sidebar-list{
+    list-style: none;
+    padding: 0px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+.ad-sidebar-element{
+    padding: .8rem 1.3rem;
+    border-radius: 3px;
+   
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40px 0fr;
+
+    color: #526581;
+    fill: #8491a5;
+
+    transition: grid-template-columns .4s;
+}
+.ad-sidebar-element:not(.ad-sidebar-element-log):hover{
+    background-color: #007AFF;
+    color: white;
+    fill: white;
+    cursor: pointer;
+}
+.ad-sidebar-logo{
+    max-width: 30px;
+}
+.ad-sidebar-hide{
+    overflow: hidden;
+}
+.ad-sidebar-icono{
+     width: 100%;
+     overflow: hidden;
+     justify-self: center;
+
+    width: 24px;
+    height: 24px;
+    fill: #ffffff  ; 
+}
+/***********************Usaurio administrador********************/
+
+.ad-usuarios{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.ad-usuario-card{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.usuario-ad-usuario-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.ad-usuario-card h3{
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.ad-usuario-card p{
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.usuario-rol {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #e0e0e0;
+}
