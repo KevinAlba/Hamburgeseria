@@ -19,7 +19,7 @@
 public function toArray() {
     return [
         'categoria_id' => $this->categoria_id,
-        'nombre' => $this->nombre_categoria,
+        'nombre_categoria' => $this->nombre_categoria,
         'categoria_padre' => $this->categoria_padre
     ];
 }

@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Public/CSS/styles.css">
-
-</head>
-
-<body>
     <!---------------------------------Banner Section 1------------------------------------>
     <section>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -21,21 +9,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="Public/Imagenes/banner1.png" class="d-block w-100" alt="...">
+                    <img src="Public/Imagenes/banner1.webp" class="d-block w-100" alt="...">
                     <div class="carousel-caption">
                         <h2>El sabor que une a la afición</h2>
                         <p>Hamburguesas hechas con pasión rojiblanca.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="Public/Imagenes/banner2.png" class="d-block w-100" alt="...">
+                    <img src="Public/Imagenes/banner2.webp" class="d-block w-100" alt="...">
                     <div class="carousel-caption">
                         <h2>Sabor premium en cada bocado</h2>
                         <p>Ingredientes frescos, recetas únicas.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="Public/Imagenes/banner3.png" class="d-block w-100" alt="...">
+                    <img src="Public/Imagenes/banner3.webp" class="d-block w-100" alt="...">
                     <div class="carousel-caption">
                         <h2>Un estadio de sabores</h2>
                         <p>Vive la experiencia rojiblanca también en la mesa.</p>
@@ -71,7 +59,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center"><?= $producto->getNOMBRE() ?></h5>
                             <p class="card-text text-center"><?= $producto->getDESCRIPCION() ?></p>
-                            <a href="index.php?ProductoControllerr=Productos&action=show&PRODUCTO_ID=<?= $producto->getPRODUCTO_ID() ?>" class="btn btn-primary align-self-center border-0">Ver más</a>
+                            <a href="?controller=Producto&action=ver&id=<?= $producto->getPRODUCTO_ID() ?>" class="btn btn-primary align-self-center border-0">Ver más</a>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -82,44 +70,41 @@
     <section id="homeSection3" class="mt-5 position-relative pb-5">
         <div class="bg-overlay"></div>
         <h2 class="text-center text-white fw-bold titulo">Menus</h2>
-        <div class="align-items-center d-flex flex-column justify-content-center">
+        <div class="align-items-center d-flex flex-column justify-content-center p-5">
             <div class="slider-container">
                 <div class="slider-track">
                     <?php foreach ($listaProductos as $producto): ?>
+                        <?php if ($producto->getcategoria_id() == 22 ): ?>
                         <img
                             src="Public/Imagenes/Productos/<?= $producto->getImagen() ?>"
                             data-id="<?= $producto->getPRODUCTO_ID() ?>"
                             data-nombre="<?= $producto->getNOMBRE() ?>"
                             data-desc="<?= $producto->getDESCRIPCION() ?>">
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
-
-            <div id="burger-info"></div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <button id="btn-prev" class="nav-btn btn btn-secondary d-flex">
+            <div class="d-flex justify-content-between mt-3 w-100">
+                <button id="btn-prev" class="nav-btn btn btn-secondary d-flex align-items-center justify-content-center">
                     <svg color="currentColor" class="sc-f566aa5-0 MkIcon MkIcon--arrowLeft" role="presentation" aria-hidden="true" width="25" height="24" viewBox="0 0 25 24" fill="none" style="width: 24px; height: 24px;">
                         <path d="M12.6319 5.53033C12.9248 5.23744 12.9248 4.76256 12.6319 4.46967C12.339 4.17678 11.8641 4.17678 11.5712 4.46967L4.57123 11.4697C4.27834 11.7626 4.27834 12.2374 4.57123 12.5303L11.5712 19.5303C11.8641 19.8232 12.339 19.8232 12.6319 19.5303C12.9248 19.2374 12.9248 18.7626 12.6319 18.4697L6.87455 12.7123H19.1399C19.533 12.7123 19.8516 12.3937 19.8516 12.0007C19.8516 11.6077 19.533 11.2891 19.1399 11.2891H6.87316L12.6319 5.53033Z" fill="currentColor"></path>
                     </svg>
                 </button>
-                <button id="btn-next" class="nav-btn btn btn-secondary d-flex ">
+                    <div id="burger-info"></div>
+                <button id="btn-next" class="nav-btn btn btn-secondary d-flex align-items-center justify-content-center">
                     <svg color="currentColor" class="sc-f566aa5-0 MkIcon MkIcon--arrowRight" role="presentation" aria-hidden="true" width="25" height="24" viewBox="0 0 25 24" fill="none" style="width: 24px; height: 24px;">
                         <path d="M13.0381 4.46967C12.7452 4.17678 12.2704 4.17678 11.9775 4.46967C11.6846 4.76256 11.6846 5.23744 11.9775 5.53033L17.7382 11.291H5.46755C5.07557 11.291 4.75781 11.6088 4.75781 12.0008C4.75781 12.3927 5.07557 12.7105 5.46755 12.7105H17.7367L11.9775 18.4697C11.6846 18.7626 11.6846 19.2374 11.9775 19.5303C12.2704 19.8232 12.7452 19.8232 13.0381 19.5303L20.0381 12.5303C20.331 12.2374 20.331 11.7626 20.0381 11.4697L13.0381 4.46967Z" fill="currentColor"></path>
                     </svg>
                 </button>
             </div>
-
         </div>
     </section>
     <!---------------------------------Menus Section 4------------------------------------>
     <section class=" mb-5">
-        <h2 class=" text-center mt-5 mb-3">Ven aprobar la experencia rojiblanca</h2>
+        <h2 class="fw-bold text-center mt-5 mb-3">Ven aprobar la experencia rojiblanca</h2>
         <p class=" text-center">Estamos en el corazon del Granada, listos para servirte la mejor burguer con pasion de estadio</p>
-        <div class=" d-flex align-items-center justify-content-center mt-4 gap-4 flex-wrap">
-            <a href="https://www.google.com/maps/place/Estadi+Nuevo+Los+C%C3%A1rmenes/@37.1534816,-3.5956908,1331m/data=!3m1!1e3!4m6!3m5!1s0xd71fb5945fc3401:0x7d219a51fb97e3e2!8m2!3d37.1529018!4d-3.5957356!16zL20vMGNnazNz?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank">
-                <img class="maps" src="Public/Imagenes/Maps.png" alt="Ubicación en Google Maps">
-            </a>
-            <div class=" align-content-center d-flex flex-column gap-3">
+        <div class="mapa-iconos d-flex align-items-center justify-content-center mt-4 gap-5 flex-wrap">
+                <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12502.055790819906!2d-3.595574440415517!3d37.149191930534286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fb5945fc3401%3A0x7d219a51fb97e3e2!2sEstadi%20Nuevo%20Los%20C%C3%A1rmenes!5e0!3m2!1sca!2ses!4v1767195067093!5m2!1sca!2ses" width="668" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            <div class=" align-content-center d-flex flex-column gap-3">
                 <div class=" d-flex">
                     <svg class="maps-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                         <path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z" />
@@ -150,44 +135,46 @@
     <script>
      document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. OBTENCIÓN DE ELEMENTOS Y VARIABLES GLOBALES
+     //obtenemms variables
 
     const track = document.querySelector('.slider-track');
     const images = Array.from(document.querySelectorAll('.slider-track img'));
     
-    // Almacenamos el ancho base del primer elemento (o de todos si son iguales) para usarlo en los cálculos.
-    // Esto es CRÍTICO si la clase 'active' cambia el tamaño de la imagen.
-    // Si tienes dudas sobre esto, usa console.log para verificar el valor.
+    // compruba si existe alguna imaen y obitne el ancho base
     const BASE_IMAGE_WIDTH = images.length > 0 ? images[0].offsetWidth : 0;
 
     let index = 0;
 
-    // 2. FUNCIÓN PRINCIPAL DEL SLIDER
+ 
+// saber el tamanño de cada image para centrar
+  function updateSlider() {
+    const container = document.querySelector(".slider-container");
+    const containerWidth = container.clientWidth;
 
-    function updateSlider() {
-        const currentImage = images[index];
-        
-        // Calcula el desplazamiento necesario para centrar la imagen activa.
-        const imageWidth = BASE_IMAGE_WIDTH || currentImage.offsetWidth; 
-        const trackStyle = window.getComputedStyle(track);
-        const gap = parseInt(trackStyle.gap) || 0;
-        const containerWidth = document.querySelector(".slider-container").clientWidth;
-        const totalWidth = imageWidth + gap;
-        const offset = (containerWidth / 2) - (imageWidth / 2) - (totalWidth * index);
+    let offset = 0;
 
-
-        track.style.transform = `translateX(${offset}px)`;
-        images.forEach(img => img.classList.remove('active', 'side'));
-        currentImage.classList.add('active');
-        
-        if (images[index - 1]) images[index - 1].classList.add('side');
-        
-        if (images[index + 1]) images[index + 1].classList.add('side');
-
-        updateInfoCard();
+    for (let i = 0; i < index; i++) {
+        offset += images[i].offsetWidth;
+        const gap = parseInt(getComputedStyle(track).gap) || 0;
+        offset += gap;
     }
+    const currentImage = images[index];
+    const currentWidth = currentImage.offsetWidth;
 
-    //ACTUALIZACIÓN DE INFORMACIÓN
+    offset -= (containerWidth / 2) - (currentWidth / 2);
+
+    track.style.transform = `translateX(${-offset}px)`;
+
+    images.forEach(img => img.classList.remove('active', 'side'));
+    currentImage.classList.add('active');
+
+    if (images[index - 1]) images[index - 1].classList.add('side');
+    if (images[index + 1]) images[index + 1].classList.add('side');
+
+    updateInfoCard();
+}
+
+    //actualiza infomracion
 
     function updateInfoCard() {
         const img = images[index];
@@ -198,7 +185,7 @@
                 <h2 class="fw-bold ">${img.dataset.nombre}</h2>
                 <div class="d-flex justify-content-between align-items-center">
                     <p>${img.dataset.desc}</p>
-                    <a href="index.php?ProductoControllerr=Productos&action=show&PRODUCTO_ID=${img.dataset.id}"
+                    <a href="?controller=Producto&action=ver&id=${img.dataset.id}"
                     class="btn btn-primary">Ver más</a>
                 </div>
             </div>
@@ -216,14 +203,8 @@
         index = (index - 1 + images.length) % images.length;
         updateSlider();
     });
--
 
-    // Posiciona el slider y carga la información inicial al abrir la página.
+    // Posiciona el slider y carga la informacion inicial al abrir la pagia.
     updateSlider();
 });
 </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>

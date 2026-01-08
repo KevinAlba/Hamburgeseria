@@ -26,11 +26,13 @@
                 }
             }
         }
-      /*  public function cerrarSession(){
-    session_start();
-    session_destroy();
-    header('Location: index.php?controller=Home&action=index');
-    exit();
-}*/
+       public function cerrarSession() {
+        $_SESSION = [];        
+        session_destroy();     
+
+        header('Location: index.php?controller=Home&action=index');
+        exit();
+    }
+
     }
 ?> 

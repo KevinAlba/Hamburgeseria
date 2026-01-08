@@ -1,5 +1,5 @@
 <?php
-include_once 'Database/database.php';
+include_once 'Database/Database.php';
 include_once 'Model/Categoria.php';
 
 class CategoriaDAO

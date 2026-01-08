@@ -4,7 +4,11 @@ include_once 'Controller/CartaController.php';
 include_once 'Controller/IniciarSessionController.php';
 include_once 'Controller/RegistrarseController.php';
 include_once 'Controller/AdministradorController.php';
+include_once 'Controller/CarritoController.php';
+include_once 'Controller/ProductoController.php';
 include_once 'Controller/UsuarioController.php';
+include_once 'Controller/ContactoController.php';
+include_once 'Controller/ConfirmacionController.php';
 
 
 /**Dice si la session esta iniciada todo el rato**/

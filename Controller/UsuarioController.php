@@ -1,76 +1,48 @@
-<?php
-include_once 'Model/UsuarioDao.php';
+<?php 
+    include_once 'Model/UsuarioDAO.php';
+ class UsuarioController {
 
-class UsuarioController
-{
-    public function index()
-    {
-        $view = 'View/usario.php';
+    public function editarPerfil(){
+        if($_SERVER['REQUEST_METHOD'] ==  'POST'){
+            $usuario_id = $_POST['id'];
+            $nombre = $_POST['nombre'];
+            $correo = $_POST['correo'];
+            $telefono = $_POST['telefono'];
+            $contrasena = $_POST['contrasena'];
+
+             $usuarioDAO = new UsuarioDAO();
+
+             if (empty($contrasena)) {
+
+                $usuarioDAO->editarUsuarioSinPasswordSinRol(
+                    $usuario_id,
+                    $nombre,
+                    $correo,
+                    $telefono
+                );
+
+            } else {
+                $usuarioDAO->editarUsuarioConPasswordSinRol(
+                    $usuario_id,
+                    $nombre,
+                    $correo,
+                    $contrasena = password_hash($contrasena, PASSWORD_BCRYPT),
+                    $telefono
+                );
+            }
+            header("Location: index.php?controller=Usuario&action=index");
+            exit;
+        }
+    }
+
+    
+     public function index() {
+       $usuarioDAO = new UsuarioDAO();
+        $usuario = $usuarioDAO->getUsuarioById($_SESSION['usuario_id']);
+
+        $view = 'View/usuario.php';
         include 'View/main.php';
-    }
-
-    public function borrarUsuarios()
-    {
-        parse_str(file_get_contents("php://input"), $_DELETE);
-
-        if (!isset($_DELETE['usuario_id'])) {
-            echo json_encode(['error' => 'ID no recibido']);
-            return;
-        }
-        $usuario_id = $_DELETE['usuario_id'];
-        $usuarioDAO = new UsuarioDAO();
-        $usuarioDAO->borrarUsuarios($usuario_id);
-        echo json_encode(['ok' => true]);
-    }
-
-    public function editarUsuario() {
-    header('Content-Type: application/json; charset=utf-8');
-    parse_str(file_get_contents("php://input"), $data);
-
-    if (!isset($data['usuario_id'])) {
-        echo json_encode(['ok' => false]);
-        return;
-    }
-    $dao = new UsuarioDAO();
-
-    if (empty($data['contrasena'])) {
-        // 🔹 SIN cambiar contraseña
-        $dao->editarUsuarioSinPassword(
-            $data['usuario_id'],
-            $data['nombre'],
-            $data['correo'],
-            $data['telefono'],
-            $data['rol']
-        );
-    } else {
-        // 🔹 Cambiando contraseña
-        $dao->editarUsuarioConPassword(
-            $data['usuario_id'],
-            $data['nombre'],
-            $data['correo'],
-            password_hash($data['contrasena'], PASSWORD_DEFAULT),
-            $data['telefono'],
-            $data['rol']
-        );
-    }
-
-    echo json_encode(['ok' => true]);
-}
-
-
-
-
-    /*********API Json***** */
-    public function getUsuarios()
-    {
-        header('Content-Type: application/json; charset=utf-8');
-
-        $listarUsario = UsuarioDAO::getUsuarios();
-        $data = [];
-        foreach ($listarUsario as $usuario) {
-            $data[] = $usuario->toArray();
-        }
-
-        echo json_encode($data);
-    }
-}
+     }
+    }    
+    
+?>

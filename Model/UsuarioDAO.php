@@ -1,28 +1,9 @@
 <?php
-include_once 'Database/database.php';
+include_once 'Database/Database.php';
 include_once 'Model/Usuario.php';
 
 class UsuarioDAO
 {
-
-    // Todas los Usuario para api
-    public static function getUsuarios()
-    {
-        $con = database::connect();
-        $stmt = $con->prepare("SELECT * FROM usuarios");
-        $stmt->execute();
-
-        $result = $stmt->get_result();
-        $listarUsuario = [];
-
-        while ($usuario = $result->fetch_object("Usuario")) {
-            $listarUsuario[] = $usuario;
-        }
-
-        $con->close();
-        return $listarUsuario;
-    }
-
 
     //Buscar por email de usuario
     public function buscarPorCorreo($Correo)
@@ -44,6 +25,25 @@ class UsuarioDAO
         } else {
             return null;
         }
+    }
+
+    /**************Api************************** */
+    // Mostrar Usuarios
+    public static function getUsuarios()
+    {
+        $con = database::connect();
+        $stmt = $con->prepare("SELECT * FROM usuarios");
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $listarUsuario = [];
+
+        while ($usuario = $result->fetch_object("Usuario")) {
+            $listarUsuario[] = $usuario;
+        }
+
+        $con->close();
+        return $listarUsuario;
     }
     //inserta usuario
     public function insertarUsuario($usuario)
@@ -68,7 +68,7 @@ class UsuarioDAO
         $stmt->execute();
     }
 
- // SIN contraseña
+ // Editar Usuarios sin contraseña
 public function editarUsuarioSinPassword($id, $nombre, $correo, $telefono, $rol) {
     $con = database::connect();
     $stmt = $con->prepare("UPDATE usuarios SET nombre = ?, correo = ?, telefono = ?, rol = ? WHERE usuario_id = ? ");
@@ -77,7 +77,7 @@ public function editarUsuarioSinPassword($id, $nombre, $correo, $telefono, $rol)
     $con->close();
 }
 
-// CON contraseña
+//  Editar Usuarios con contraseña
 public function editarUsuarioConPassword($id, $nombre, $correo, $contrasena, $telefono, $rol) {
     $con = database::connect();
     $stmt = $con->prepare("UPDATE usuarios SET nombre = ?, correo = ?, contrasena = ?, telefono = ?, rol = ? WHERE usuario_id = ?");
@@ -86,4 +86,34 @@ public function editarUsuarioConPassword($id, $nombre, $correo, $contrasena, $te
     $con->close();
 }
 
+ // Editar Usuarios sin contraseña y sin rol
+public function editarUsuarioSinPasswordSinRol($usuario_id, $nombre, $correo, $telefono) {
+    $con = database::connect();
+    $stmt = $con->prepare("UPDATE usuarios SET nombre = ?, correo = ?, telefono = ? WHERE usuario_id = ? ");
+    $stmt->bind_param("sssi", $nombre, $correo, $telefono, $usuario_id);
+    $stmt->execute();
+    $con->close();
+}
+
+//  Editar Usuarios con contraseña y sin rol
+public function editarUsuarioConPasswordSinRol($usuario_id, $nombre, $correo, $contrasena, $telefono) {
+    $con = database::connect();
+    $stmt = $con->prepare("UPDATE usuarios SET nombre = ?, correo = ?, contrasena = ?, telefono = ? WHERE usuario_id = ?");
+    $stmt->bind_param("ssssi", $nombre, $correo, $contrasena, $telefono, $usuario_id);
+    $stmt->execute();
+    $con->close();
+}
+
+    // Obtener usuario por id
+public function getUsuarioById($usuario_id) {
+        $con = database::connect();
+        $stmt = $con->prepare("SELECT * FROM usuarios WHERE usuario_id = ?");
+        $stmt->bind_param("i", $usuario_id);
+        $stmt->execute();
+        $results = $stmt->get_result();
+
+        $usuario = $results->fetch_assoc();         
+        $con->close();
+        return $usuario;
+    }
 }

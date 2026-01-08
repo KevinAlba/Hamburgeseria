@@ -1,13 +1,8 @@
 <?php 
-include_once 'Controller/HomeController.php';
-include_once 'Controller/CartaController.php';
-include_once 'Controller/IniciarSessionController.php';
-include_once 'Controller/RegistrarseController.php';
-include_once 'Controller/AdministradorController.php';
-include_once 'Controller/UsuarioController.php';
 
+include_once 'Controller/ApiController.php';
+include_once 'Controller/CurrencyController.php';
 
-/**Dice si la session esta iniciada todo el rato**/
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

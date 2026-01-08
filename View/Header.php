@@ -14,8 +14,8 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="http://localhost/Proyecto_Granada/?controller=home&action=index">INICIO</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/http://localhost/Proyecto_Granada/?controller=carta&action=index&?cat=Hamburguesas">CARTA</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">CONTACTO</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://localhost/Proyecto_Granada/?controller=carta&action=index&?cat=Hamburguesas">CARTA</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://localhost/Proyecto_Granada/?controller=contacto&action=index">CONTACTO</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         </svg>
                     </li>
                     <li class="nav-item d-flex align-items-center gap-1">
-                        <a class="nav-link text-white" href="#">CONTACTO</a>
+                        <a class="nav-link text-white" href="http://localhost/Proyecto_Granada/?controller=contacto&action=index">CONTACTO</a>
                         <svg color="currentColor" class="sc-f566aa5-0 MkIcon MkIcon--chevronDown" role="presentation" aria-hidden="true" width="25" height="24" viewBox="0 0 25 24" fill="none" style="width: 1em; height: 1em;">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.38569 9.46967C6.67858 9.17678 7.15345 9.17678 7.44635 9.46967L12.916 14.9393L18.3857 9.46967C18.6786 9.17678 19.1535 9.17678 19.4463 9.46967C19.7392 9.76256 19.7392 10.2374 19.4463 10.5303L13.4463 16.5303C13.1535 16.8232 12.6786 16.8232 12.3857 16.5303L6.38569 10.5303C6.09279 10.2374 6.09279 9.76256 6.38569 9.46967Z" fill="currentColor"></path>
                         </svg>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
             <div class=" icons d-flex align-items-center gap-3">
-                <a href="#">
+                <a href="http://localhost/Proyecto_Granada/?controller=Carrito&action=index">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                         <path d="M24-16C10.7-16 0-5.3 0 8S10.7 32 24 32l45.3 0c3.9 0 7.2 2.8 7.9 6.6l52.1 286.3c6.2 34.2 36 59.1 70.8 59.1L456 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-255.9 0c-11.6 0-21.5-8.3-23.6-19.7l-5.1-28.3 303.6 0c30.8 0 57.2-21.9 62.9-52.2L568.9 69.9C572.6 50.2 557.5 32 537.4 32l-412.7 0-.4-2c-4.8-26.6-28-46-55.1-46L24-16zM208 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm224 0a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
                     </svg>
@@ -52,14 +52,10 @@
                 <?php 
                      if (!isset($_SESSION['usuario_id'])) {
                         $url = "http://localhost/Proyecto_Granada/?controller=IniciarSession&action=index";
-                        echo"No estoy logueado";
                     } else if ($_SESSION['rol'] === 'admin') {
                         $url = "http://localhost/Proyecto_Granada/?controller=Administrador&action=index";
-                        echo"Estoy logueado con el administrador";
                     } else {
                         $url = "http://localhost/Proyecto_Granada/?controller=Usuario&action=index";
-                        echo"Estoy logueado con el user";
-
                     }
                     ?>
                 <a href="<?= $url ?>">
